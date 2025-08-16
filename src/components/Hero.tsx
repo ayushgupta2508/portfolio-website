@@ -56,7 +56,7 @@ export const Hero = () => {
               variant="outline" 
               size="lg"
               onClick={handleEmailClick}
-              className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 transition-smooth"
+              className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary transition-smooth"
             >
               <Mail className="w-4 h-4 mr-2" />
               {t('hero.contactMe')}

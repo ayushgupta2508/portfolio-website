@@ -3,9 +3,12 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { ExternalLink, Github } from 'lucide-react';
+import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 export const Projects = () => {
   const { t, language } = useLanguage();
+  const { elementRef: titleRef, isVisible: titleVisible } = useScrollAnimation();
+  const { elementRef: projectsRef, isVisible: projectsVisible } = useScrollAnimation({ threshold: 0.1 });
 
   const projects = [
     {
@@ -69,13 +72,23 @@ export const Projects = () => {
   return (
     <section id="projects" className="py-20 bg-background">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
+        <div 
+          ref={titleRef}
+          className={`text-center mb-16 transition-all duration-700 ${
+            titleVisible ? 'animate-fade-up' : 'opacity-0 translate-y-8'
+          }`}
+        >
           <h2 className="text-4xl md:text-5xl font-bold text-gradient mb-6">
             {t('projects.title')}
           </h2>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8">
+        <div 
+          ref={projectsRef}
+          className={`grid md:grid-cols-2 gap-8 transition-all duration-700 ${
+            projectsVisible ? 'animate-scale-in' : 'opacity-0 scale-95'
+          }`}
+        >
           {projects.map((project, index) => (
             <Card key={index} className="bg-gradient-card shadow-soft border-0 transition-smooth hover:shadow-elegant h-full">
               <CardHeader>

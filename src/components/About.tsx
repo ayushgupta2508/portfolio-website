@@ -1,14 +1,22 @@
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Card, CardContent } from '@/components/ui/card';
 import { GraduationCap, Languages, Award } from 'lucide-react';
+import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 export const About = () => {
   const { t } = useLanguage();
+  const { elementRef: titleRef, isVisible: titleVisible } = useScrollAnimation();
+  const { elementRef: cardsRef, isVisible: cardsVisible } = useScrollAnimation({ threshold: 0.2 });
 
   return (
     <section id="about" className="py-20 bg-background">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
+        <div 
+          ref={titleRef}
+          className={`text-center mb-16 transition-all duration-700 ${
+            titleVisible ? 'animate-fade-up' : 'opacity-0 translate-y-8'
+          }`}
+        >
           <h2 className="text-4xl md:text-5xl font-bold text-gradient mb-6">
             {t('about.title')}
           </h2>
@@ -17,7 +25,12 @@ export const About = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div 
+          ref={cardsRef}
+          className={`grid md:grid-cols-3 gap-8 transition-all duration-700 ${
+            cardsVisible ? 'animate-fade-up' : 'opacity-0 translate-y-8'
+          }`}
+        >
           {/* Education */}
           <Card className="bg-gradient-card shadow-soft border-0 transition-smooth hover:shadow-elegant">
             <CardContent className="p-8">

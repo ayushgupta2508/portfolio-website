@@ -2,9 +2,12 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Code, Database, Cloud, Wrench, Layers, Settings } from 'lucide-react';
+import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 export const Skills = () => {
   const { t } = useLanguage();
+  const { elementRef: titleRef, isVisible: titleVisible } = useScrollAnimation();
+  const { elementRef: skillsRef, isVisible: skillsVisible } = useScrollAnimation({ threshold: 0.1 });
 
   const skillCategories = [
     {
@@ -42,13 +45,23 @@ export const Skills = () => {
   return (
     <section id="skills" className="py-20 bg-muted/30">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
+        <div 
+          ref={titleRef}
+          className={`text-center mb-16 transition-all duration-700 ${
+            titleVisible ? 'animate-fade-up' : 'opacity-0 translate-y-8'
+          }`}
+        >
           <h2 className="text-4xl md:text-5xl font-bold text-gradient mb-6">
             {t('skills.title')}
           </h2>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div 
+          ref={skillsRef}
+          className={`grid md:grid-cols-2 lg:grid-cols-3 gap-8 transition-all duration-700 ${
+            skillsVisible ? 'animate-scale-in' : 'opacity-0 scale-95'
+          }`}
+        >
           {skillCategories.map((category, index) => {
             const IconComponent = category.icon;
             return (

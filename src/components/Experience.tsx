@@ -2,9 +2,12 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Building, Calendar } from 'lucide-react';
+import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 export const Experience = () => {
   const { t, language } = useLanguage();
+  const { elementRef: titleRef, isVisible: titleVisible } = useScrollAnimation();
+  const { elementRef: experienceRef, isVisible: experienceVisible } = useScrollAnimation({ threshold: 0.1 });
 
   const experiences = [
     {
@@ -50,14 +53,24 @@ export const Experience = () => {
   return (
     <section id="experience" className="py-20 bg-muted/30">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
+        <div 
+          ref={titleRef}
+          className={`text-center mb-16 transition-all duration-700 ${
+            titleVisible ? 'animate-fade-up' : 'opacity-0 translate-y-8'
+          }`}
+        >
           <h2 className="text-4xl md:text-5xl font-bold text-gradient mb-6">
             {t('experience.title')}
           </h2>
         </div>
 
         <div className="max-w-4xl mx-auto">
-          <div className="space-y-8">
+          <div 
+            ref={experienceRef}
+            className={`space-y-8 transition-all duration-700 ${
+              experienceVisible ? 'animate-fade-up' : 'opacity-0 translate-y-8'
+            }`}
+          >
             {experiences.map((exp, index) => (
               <Card key={index} className="bg-gradient-card shadow-soft border-0 transition-smooth hover:shadow-elegant">
                 <CardContent className="p-8">
