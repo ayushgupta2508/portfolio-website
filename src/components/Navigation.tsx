@@ -53,7 +53,7 @@ export const Navigation = () => {
             onClick={scrollToTop}
             className="text-2xl font-bold text-gradient hover:opacity-80 transition-smooth"
           >
-            Ayush Gupta
+            {/*Ayush Gupta*/}
           </button>
 
           {/* Desktop Navigation */}
