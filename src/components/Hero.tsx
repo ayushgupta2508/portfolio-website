@@ -1,10 +1,31 @@
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
 import { Download, Mail, Linkedin, Phone } from 'lucide-react';
+import { useState, useEffect } from 'react';
 
 export const Hero = () => {
   const { t } = useLanguage();
+  const [isDark, setIsDark] = useState(true);
 
+  useEffect(() => {
+    // Check the current theme
+    const updateTheme = () => {
+      const isDarkMode = document.documentElement.classList.contains('dark');
+      setIsDark(isDarkMode);
+    };
+
+    // Initial check
+    updateTheme();
+
+    // Listen for theme changes
+    const observer = new MutationObserver(updateTheme);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['class']
+    });
+
+    return () => observer.disconnect();
+  }, []);
   const handleEmailClick = () => {
     window.open('mailto:ayushgupta258@gmail.com', '_blank');
   };
@@ -67,7 +88,11 @@ export const Hero = () => {
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center text-primary-foreground/80">
             <button 
               onClick={handleEmailClick}
-              className="flex items-center gap-2 hover:text-primary-foreground transition-smooth"
+              className={`border-primary-foreground ${
+                isDark 
+                  ? "text-primary-foreground hover:bg-primary-foreground hover:text-primary transition-smooth" 
+                  : "bg-primary-foreground/25 text-white hover:bg-primary-foreground hover:text-primary transition-smooth"
+              }`}
             >
               <Mail className="w-4 h-4" />
               <span>ayushgupta258@gmail.com</span>
