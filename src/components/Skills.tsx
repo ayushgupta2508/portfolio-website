@@ -39,7 +39,7 @@ export const Skills = () => {
     {
       icon: Settings,
       title: t('skills.other'),
-      skills: [/*'REST APIs',*/ 'GraphQL', 'Microservices', 'Agile', 'Scrum', 'Jira', 'Confluence', 'Grafana']
+      skills: ['REST APIs', 'GraphQL', 'Microservices', 'Agile', 'Scrum', 'Jira', 'Confluence', 'Grafana']
     }
   ];
 

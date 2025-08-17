@@ -28,7 +28,7 @@ export const Hero = () => {
   }, []);
 
   const handleEmailClick = () => {
-    window.open('mailto:ayushgupta258@gmail.com', '_blank');
+    window.open('https://github.com/ayushgupta258', '_blank');
   };
 
   const handleLinkedInClick = () => {

@@ -17,17 +17,17 @@ export const KeySkills = () => {
   const skillsTrackRef = useRef<HTMLDivElement>(null);
 
   const skills = [
-    { name: 'Java', Icon: Coffee, color: 'text-[#f89820]' },
-    { name: 'JavaScript', Icon: Code2, color: 'text-[#f7df1e]' },
-    { name: 'PostgreSQL', Icon: ReactIcons.SiPostgresql, color: 'text-[#336791]' },
+    { name: 'Java', image: '/skills/java.png', color: 'text-[#f89820]' },
+    { name: 'JavaScript', image: '/skills/javascript.png', color: 'text-[#f7df1e]' },
+    { name: 'PostgreSQL', image: '/skills/postgresql.png', color: 'text-[#336791]' },
     { name: 'MongoDB', Icon: ReactIcons.SiMongodb, color: 'text-[#47a248]' },
-    { name: 'Spring Boot', Icon: Server, color: 'text-[#6db33f]' },
-    { name: 'ReactJS', Icon: ReactIcons.SiReact, color: 'text-[#61dafb]' },
+    { name: 'Spring Boot', image: '/skills/springboot.png', color: 'text-[#6db33f]' },
+    { name: 'ReactJS', image: '/skills/reactjs.png', color: 'text-[#61dafb]' },
     { name: 'Spring Data JPA' , Icon: ReactIcons.SiSpring, color: 'text-[#6db33f]' },
-    { name: 'Apache Kafka', Icon: Database, color: 'text-primary' },
-    { name: 'Docker', Icon: Container, color: 'text-[#2496ed]' },
+    { name: 'Apache Kafka', image: '/skills/kafka.png', color: 'text-primary' },
+    { name: 'Docker', image: '/skills/docker.png', color: 'text-[#2496ed]' },
     { name: 'GitHub', Icon: ReactIcons.SiGithub, color: 'text-foreground' },
-    { name: 'Rest APIs', Icon: ReactIcons.SiApifox, color: 'text-[#ff6c37]' },
+    // { name: 'Rest APIs', image: '/skills/rest.png', color: 'text-[#ff6c37]' },
     { name: "Maven", Icon: ReactIcons.SiApachemaven, color: 'text-[#c71a36]' },
   ];
 
@@ -66,7 +66,15 @@ export const KeySkills = () => {
                   className="flex flex-col items-center group cursor-pointer transition-smooth hover:scale-110 flex-shrink-0"
                 >
                   <div className="w-20 h-20 sm:w-32 sm:h-32 md:w-36 md:h-36 flex items-center justify-center bg-card rounded-xl shadow-soft group-hover:shadow-elegant transition-smooth border border-border/50">
-                    <IconComponent className={`w-10 h-10 sm:w-14 sm:h-14 md:w-16 md:h-16 ${skill.color}`} />
+                    { skill.Icon ? (
+                        <IconComponent className={`w-10 h-10 sm:w-14 sm:h-14 md:w-16 md:h-16 ${skill.color}`} />
+                    ) : (
+                        <img
+                            src={skill.image}
+                            alt={`${skill.name} icon`}
+                            className={`w-10 h-10 sm:w-14 sm:h-14 md:w-16 md:h-16`}
+                        />
+                    )}
                   </div>
                   <span className="text-sm sm:text-base md:text-lg font-medium mt-3 md:mt-4 text-center">{skill.name}</span>
                 </div>
@@ -82,7 +90,15 @@ export const KeySkills = () => {
                   className="flex flex-col items-center group cursor-pointer transition-smooth hover:scale-110 flex-shrink-0"
                 >
                   <div className="w-20 h-20 sm:w-32 sm:h-32 md:w-36 md:h-36 flex items-center justify-center bg-card rounded-xl shadow-soft group-hover:shadow-elegant transition-smooth border border-border/50">
-                    <IconComponent className={`w-10 h-10 sm:w-14 sm:h-14 md:w-16 md:h-16 ${skill.color}`} />
+                  { skill.Icon ? (
+                      <IconComponent className={`w-10 h-10 sm:w-14 sm:h-14 md:w-16 md:h-16 ${skill.color}`} />
+                      ) : (
+                        <img
+                            src={skill.image}
+                            alt={`${skill.name} icon`}
+                            className={`w-10 h-10 sm:w-14 sm:h-14 md:w-16 md:h-16`}
+                        />
+                  )}
                   </div>
                   <span className="text-sm sm:text-base md:text-lg font-medium mt-3 md:mt-4 text-center">{skill.name}</span>
                 </div>
