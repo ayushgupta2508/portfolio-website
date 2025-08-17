@@ -1,10 +1,10 @@
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
-import { Download, Mail, Linkedin, Phone } from 'lucide-react';
+import {Download, Mail, Linkedin, Phone, Github} from 'lucide-react';
 import { useState, useEffect } from 'react';
 
 export const Hero = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const [isDark, setIsDark] = useState(true);
 
   useEffect(() => {
@@ -39,6 +39,26 @@ export const Hero = () => {
     window.open('tel:+4915510354664', '_blank');
   };
 
+  const handleDownloadClick = () => {
+    // The files should be placed in the public/resume directory
+    // Define the paths to the resume files
+    const resumeFiles = {
+      en: '/resume/Ayush_Gupta_Resume.pdf',
+      de: '/resume/Ayush_Gupta_Resume_German.pdf'
+    };
+    
+    // Get the appropriate resume file based on the current language
+    const resumeFile = resumeFiles[language];
+    
+    // Create a link element
+    const link = document.createElement('a');
+    link.href = resumeFile;
+    link.download = language === 'en' ? 'Ayush_Gupta_Resume.pdf' : 'Ayush_Gupta_Resume_German.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <section className="min-h-screen flex items-center justify-center bg-gradient-hero relative overflow-hidden">
       {/* Background decorative elements */}
@@ -68,6 +88,7 @@ export const Hero = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
             <Button 
               size="lg" 
+              onClick={handleDownloadClick}
               className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 shadow-elegant transition-smooth"
             >
               <Download className="w-4 h-4 mr-2" />
@@ -88,31 +109,31 @@ export const Hero = () => {
               {t('hero.contactMe')}
             </Button>
           </div>
-          
-          {/* Contact Information */}
-          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center text-primary-foreground/80">
-            <button 
-              onClick={handleEmailClick}
-              className="flex items-center gap-2 hover:text-primary-foreground transition-smooth"
+
+          {/* Contact */}
+          <div className="flex gap-6 justify-center items-center">
+            <button
+                onClick={handleEmailClick}
+                className="p-3 rounded-full bg-primary-foreground/10 hover:bg-primary-foreground/20 text-primary-foreground hover:scale-110 transition-smooth"
+                aria-label="Email"
             >
-              <Mail className="w-4 h-4" />
-              <span>ayushgupta258@gmail.com</span>
+              <Github className="w-5 h-5" />
             </button>
-            
-            <button 
-              onClick={handleLinkedInClick}
-              className="flex items-center gap-2 hover:text-primary-foreground transition-smooth"
+
+            <button
+                onClick={handleLinkedInClick}
+                className="p-3 rounded-full bg-primary-foreground/10 hover:bg-primary-foreground/20 text-primary-foreground hover:scale-110 transition-smooth"
+                aria-label="LinkedIn"
             >
-              <Linkedin className="w-4 h-4" />
-              <span>linkedin.com/in/ayushgupta258</span>
+              <Linkedin className="w-5 h-5" />
             </button>
-            
-            <button 
-              onClick={handlePhoneClick}
-              className="flex items-center gap-2 hover:text-primary-foreground transition-smooth"
+
+            <button
+                onClick={handlePhoneClick}
+                className="p-3 rounded-full bg-primary-foreground/10 hover:bg-primary-foreground/20 text-primary-foreground hover:scale-110 transition-smooth"
+                aria-label="Phone"
             >
-              <Phone className="w-4 h-4" />
-              <span>+49-15510354664</span>
+              <Phone className="w-5 h-5" />
             </button>
           </div>
         </div>
