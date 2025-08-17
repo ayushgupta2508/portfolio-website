@@ -1,27 +1,20 @@
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
-import { 
-  SiPostgresql, 
-  SiReact, 
-  SiGithub, 
-  SiDocker, 
-  SiJavascript, 
-  SiMongodb 
-} from 'react-icons/si';
-import { Coffee, Server, Database } from 'lucide-react';
+import * as ReactIcons from 'react-icons/si';
+import { Coffee, Server, Database, Code2, Layers, Container } from 'lucide-react';
 
 export const KeySkillsCarousel = () => {
   const { elementRef: carouselRef, isVisible: carouselVisible } = useScrollAnimation({ threshold: 0.1 });
 
   const keySkills = [
     { name: 'Java', Icon: Coffee, color: 'text-[#f89820]' },
-    { name: 'PostgreSQL', Icon: SiPostgresql, color: 'text-[#336791]' },
+    { name: 'PostgreSQL', Icon: ReactIcons.SiPostgresql, color: 'text-[#336791]' },
     { name: 'Spring Boot', Icon: Server, color: 'text-[#6db33f]' },
-    { name: 'ReactJS', Icon: SiReact, color: 'text-[#61dafb]' },
+    { name: 'ReactJS', Icon: ReactIcons.SiReact, color: 'text-[#61dafb]' },
     { name: 'Apache Kafka', Icon: Database, color: 'text-primary' },
-    { name: 'GitHub', Icon: SiGithub, color: 'text-foreground' },
-    { name: 'Docker', Icon: SiDocker, color: 'text-[#2496ed]' },
-    { name: 'JavaScript', Icon: SiJavascript, color: 'text-[#f7df1e]' },
-    { name: 'MongoDB', Icon: SiMongodb, color: 'text-[#47a248]' },
+    { name: 'GitHub', Icon: ReactIcons.SiGithub, color: 'text-foreground' },
+    { name: 'Docker', Icon: Container, color: 'text-[#2496ed]' },
+    { name: 'JavaScript', Icon: Code2, color: 'text-[#f7df1e]' },
+    { name: 'MongoDB', Icon: ReactIcons.SiMongodb, color: 'text-[#47a248]' },
   ];
 
   return (
