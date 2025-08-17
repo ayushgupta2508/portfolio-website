@@ -62,7 +62,7 @@ export const Navigation = () => {
               <button
                 key={item.key}
                 onClick={() => scrollToSection(item.href)}
-                className="text-muted-foreground hover:text-primary transition-smooth font-medium"
+                className="text-slate-700 dark:text-foreground hover:bg-primary/10 dark:hover:bg-primary/10 px-3 py-2 rounded-md transition-smooth font-medium"
               >
                 {t(item.key)}
               </button>
@@ -96,7 +96,7 @@ export const Navigation = () => {
                 <button
                   key={item.key}
                   onClick={() => scrollToSection(item.href)}
-                  className="block w-full text-left px-4 py-2 text-muted-foreground hover:text-primary hover:bg-muted/50 transition-smooth font-medium"
+                  className="block w-full text-left px-4 py-2 text-slate-700 dark:text-foreground hover:bg-primary/10 dark:hover:bg-primary/10 transition-smooth font-medium rounded-md"
                 >
                   {t(item.key)}
                 </button>
