@@ -3,6 +3,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Code, Database, Cloud, Wrench, Layers, Settings } from 'lucide-react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
+import { KeySkills } from '@/components/KeySkills';
 
 export const Skills = () => {
   const { t } = useLanguage();
@@ -13,39 +14,39 @@ export const Skills = () => {
     {
       icon: Code,
       title: t('skills.languages'),
-      skills: ['Java', 'JavaScript', 'Python', 'TypeScript']
+      skills: [/*'Java', 'JavaScript',*/ 'Python', 'TypeScript']
     },
     {
       icon: Layers,
       title: t('skills.frameworks'),
-      skills: ['Spring Boot', 'Spring Data JPA', 'ReactJS', 'Node.js', 'Hibernate', 'JUnit']
+      skills: [/*'Spring Boot', 'Spring Data JPA', 'ReactJS',*/ 'Node.js', 'Hibernate', 'JUnit']
     },
     {
       icon: Database,
       title: t('skills.databases'),
-      skills: ['SQL', 'NoSQL', 'PostgreSQL', 'MongoDB']
+      skills: ['SQL', 'NoSQL', 'MySQL'/*, 'PostgreSQL', 'MongoDB'*/]
     },
     {
       icon: Cloud,
       title: t('skills.cloud'),
-      skills: ['Docker', 'Kubernetes', 'AWS', 'CI/CD', 'Apache Kafka']
+      skills: [/*'Docker', 'Apache Kafka',*/ 'Kubernetes', 'AWS', 'CI/CD']
     },
     {
       icon: Wrench,
       title: t('skills.tools'),
-      skills: ['GitHub', 'BitBucket', 'IntelliJ IDEA', 'Maven', 'Gradle']
+      skills: [/*'GitHub', 'Maven',*/ 'BitBucket', 'IntelliJ IDEA', 'Gradle']
     },
     {
       icon: Settings,
       title: t('skills.other'),
-      skills: ['REST APIs', 'GraphQL', 'Microservices', 'Agile', 'Scrum', 'Jira', 'Confluence', 'Grafana']
+      skills: [/*'REST APIs',*/ 'GraphQL', 'Microservices', 'Agile', 'Scrum', 'Jira', 'Confluence', 'Grafana']
     }
   ];
 
   return (
     <section id="skills" className="py-20 bg-muted/30">
       <div className="container mx-auto px-6">
-        <div 
+        <div
           ref={titleRef}
           className={`text-center mb-16 transition-all duration-700 ${
             titleVisible ? 'animate-fade-up' : 'opacity-0 translate-y-8'
@@ -54,6 +55,17 @@ export const Skills = () => {
           <h2 className="text-4xl md:text-5xl font-bold text-gradient mb-6">
             {t('skills.title')}
           </h2>
+        </div>
+
+        <KeySkills />
+
+        <div
+            ref={titleRef}
+            className={`text-center mt-8 mb-8 transition-all duration-700 ${
+                titleVisible ? 'animate-fade-up' : 'opacity-0 translate-y-8'
+            }`}
+        >
+          <h3 className="text-2xl md:text-3xl font-semibold mb-2">Other</h3>
         </div>
 
         <div 
