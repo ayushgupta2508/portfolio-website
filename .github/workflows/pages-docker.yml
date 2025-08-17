@@ -1,0 +1,52 @@
+name: Build with Docker and Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+      - uses: docker/setup-buildx-action@v3
+
+      - name: Build Docker image (build stage only)
+        run: docker build --target build -t site-build:latest .
+
+      - name: Extract dist from image
+        run: |
+          id=$(docker create site-build:latest)
+          docker cp "$id":/app/dist ./dist
+          docker rm -v "$id"
+
+      # SPA fix for deep links on GitHub Pages
+      - name: Copy 404.html
+        run: cp dist/index.html dist/404.html
+
+      - name: Upload artifact to Pages
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/deploy-pages@v4
+        id: deployment
