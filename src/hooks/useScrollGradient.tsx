@@ -7,9 +7,10 @@ export const useScrollGradient = () => {
     const handleScroll = () => {
       const scrollY = window.scrollY;
       const windowHeight = window.innerHeight;
+      const documentHeight = document.documentElement.scrollHeight;
       
-      // Show gradient when scrolled past hero but not at full page coverage
-      setShowGradient(scrollY > windowHeight * 0.3 && scrollY < windowHeight * 0.95);
+      // Show gradient when scrolled past 20% of hero until near the end of document
+      setShowGradient(scrollY > windowHeight * 0.2 && scrollY < documentHeight - windowHeight * 1.2);
     };
 
     window.addEventListener('scroll', handleScroll);

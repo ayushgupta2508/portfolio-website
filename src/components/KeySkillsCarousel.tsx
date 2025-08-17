@@ -28,14 +28,14 @@ export const KeySkillsCarousel = () => {
       
       <div className="relative overflow-hidden">
         {/* Left Gradient */}
-        <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-muted/30 to-transparent z-10 pointer-events-none"></div>
+        <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-background via-background/80 to-transparent z-10 pointer-events-none"></div>
         
         {/* Right Gradient */}
-        <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-muted/30 to-transparent z-10 pointer-events-none"></div>
+        <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-background via-background/80 to-transparent z-10 pointer-events-none"></div>
         
         {/* Scrollable Container */}
         <div className="overflow-x-auto scrollbar-hide">
-          <div className="flex gap-8 pb-4 px-20" style={{ width: 'max-content' }}>
+          <div className="flex gap-12 pb-4 px-32" style={{ width: 'max-content' }}>
             {keySkills.map((skill, index) => {
               const IconComponent = skill.Icon;
               return (
@@ -43,10 +43,10 @@ export const KeySkillsCarousel = () => {
                   key={index}
                   className="flex flex-col items-center group cursor-pointer transition-smooth hover:scale-110"
                 >
-                  <div className="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center bg-card rounded-xl shadow-soft group-hover:shadow-elegant transition-smooth border border-border/50">
-                    <IconComponent className={`w-8 h-8 md:w-10 md:h-10 ${skill.color}`} />
+                  <div className="w-24 h-24 md:w-28 md:h-28 flex items-center justify-center bg-card rounded-xl shadow-soft group-hover:shadow-elegant transition-smooth border border-border/50">
+                    <IconComponent className={`w-12 h-12 md:w-14 md:h-14 ${skill.color}`} />
                   </div>
-                  <span className="text-sm font-medium mt-3 text-center">{skill.name}</span>
+                  <span className="text-base md:text-lg font-medium mt-4 text-center">{skill.name}</span>
                 </div>
               );
             })}
