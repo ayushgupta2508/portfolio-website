@@ -3,11 +3,14 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Code, Database, Cloud, Wrench, Layers, Settings } from 'lucide-react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
+import { KeySkillsCarousel } from '@/components/KeySkillsCarousel';
+import { useScrollGradient } from '@/hooks/useScrollGradient';
 
 export const Skills = () => {
   const { t } = useLanguage();
   const { elementRef: titleRef, isVisible: titleVisible } = useScrollAnimation();
   const { elementRef: skillsRef, isVisible: skillsVisible } = useScrollAnimation({ threshold: 0.1 });
+  const showGradient = useScrollGradient();
 
   const skillCategories = [
     {
@@ -43,7 +46,12 @@ export const Skills = () => {
   ];
 
   return (
-    <section id="skills" className="py-20 bg-muted/30">
+    <section 
+      id="skills" 
+      className={`py-20 transition-all duration-500 ${
+        showGradient ? 'bg-gradient-hero' : 'bg-muted/30'
+      }`}
+    >
       <div className="container mx-auto px-6">
         <div 
           ref={titleRef}
@@ -51,10 +59,15 @@ export const Skills = () => {
             titleVisible ? 'animate-fade-up' : 'opacity-0 translate-y-8'
           }`}
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-gradient mb-6">
+          <h2 className={`text-4xl md:text-5xl font-bold mb-6 ${
+            showGradient ? 'text-primary-foreground' : 'text-gradient'
+          }`}>
             {t('skills.title')}
           </h2>
         </div>
+
+        {/* Key Skills Carousel */}
+        <KeySkillsCarousel />
 
         <div 
           ref={skillsRef}

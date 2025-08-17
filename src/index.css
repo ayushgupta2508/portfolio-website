@@ -197,6 +197,16 @@ All colors MUST be HSL.
   .scale-95 {
     transform: scale(0.95);
   }
+
+  /* Hide scrollbar */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 @keyframes fade-up {

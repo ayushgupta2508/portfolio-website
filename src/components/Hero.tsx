@@ -84,34 +84,30 @@ export const Hero = () => {
             </Button>
           </div>
           
-          {/* Contact Information */}
-          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center text-primary-foreground/80">
+          {/* Contact Icons Only */}
+          <div className="flex gap-6 justify-center items-center">
             <button 
               onClick={handleEmailClick}
-              className={`border-primary-foreground ${
-                isDark 
-                  ? "text-primary-foreground hover:bg-primary-foreground hover:text-primary transition-smooth" 
-                  : "bg-primary-foreground/25 text-white hover:bg-primary-foreground hover:text-primary transition-smooth"
-              }`}
+              className="p-3 rounded-full bg-primary-foreground/10 hover:bg-primary-foreground/20 text-primary-foreground hover:scale-110 transition-smooth"
+              aria-label="Email"
             >
-              <Mail className="w-4 h-4" />
-              <span>ayushgupta258@gmail.com</span>
+              <Mail className="w-5 h-5" />
             </button>
             
             <button 
               onClick={handleLinkedInClick}
-              className="flex items-center gap-2 hover:text-primary-foreground transition-smooth"
+              className="p-3 rounded-full bg-primary-foreground/10 hover:bg-primary-foreground/20 text-primary-foreground hover:scale-110 transition-smooth"
+              aria-label="LinkedIn"
             >
-              <Linkedin className="w-4 h-4" />
-              <span>linkedin.com/in/ayushgupta258</span>
+              <Linkedin className="w-5 h-5" />
             </button>
             
             <button 
               onClick={handlePhoneClick}
-              className="flex items-center gap-2 hover:text-primary-foreground transition-smooth"
+              className="p-3 rounded-full bg-primary-foreground/10 hover:bg-primary-foreground/20 text-primary-foreground hover:scale-110 transition-smooth"
+              aria-label="Phone"
             >
-              <Phone className="w-4 h-4" />
-              <span>+49-15510354664</span>
+              <Phone className="w-5 h-5" />
             </button>
           </div>
         </div>
