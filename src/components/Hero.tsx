@@ -28,6 +28,10 @@ export const Hero = () => {
   }, []);
 
   const handleEmailClick = () => {
+    window.open('mailto:ayushgupta258@gmail.com', '_blank');
+  };
+
+  const handleGitClick = () => {
     window.open('https://github.com/ayushgupta258', '_blank');
   };
 
@@ -113,9 +117,9 @@ export const Hero = () => {
           {/* Contact */}
           <div className="flex gap-6 justify-center items-center">
             <button
-                onClick={handleEmailClick}
+                onClick={handleGitClick}
                 className="p-3 rounded-full bg-primary-foreground/10 hover:bg-primary-foreground/20 text-primary-foreground hover:scale-110 transition-smooth"
-                aria-label="Email"
+                aria-label="GitHub"
             >
               <Github className="w-5 h-5" />
             </button>
